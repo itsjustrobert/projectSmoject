@@ -131,7 +131,7 @@ container.appendChild(unorderedList);
 
 let h1=document.createElement('h1');
 h1.classList.add('headers');
-let h1Text=document.createTextNode('hi im your h1');
+let h1Text=document.createTextNode('journal entry');
 h1.appendChild(h1Text);
 container.append(h1);
 // ====================================================================================
@@ -185,7 +185,12 @@ container.appendChild(form);
 
 
 
+
 // Output your journal entries in an HTML table
+
+
+
+
 // // ==============================================================================
 
 
@@ -209,4 +214,15 @@ container.appendChild(form);
 
 }
 main();
+var myform = document.createElement("form");
+myform.action = "myForm.aspx";
+myform.method = "post";
+
+
+product = document.createElement("input");
+product.value = "value";
+product.name = "name";
+
+myform.appendChild(product);
+myform.submit();
 
