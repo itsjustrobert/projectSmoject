@@ -3,9 +3,9 @@
 
 
 // After each submission
-// Add the entry to the journalEntries array
-// Add an unordered list (ul) to the DOM
-// Add create date as a list item (li) element to the unordered list
+
+
+
 // Add confidence entry as a list item (li) element to the unordered list
 // Add entry text as a list item (li) element to the unordered list
 // Use a function that you implement to iterate the list of entries in the array, and using template literals, render all 
@@ -39,8 +39,6 @@
 // }
 // Use CSS to format the entries on your web page as you choose and be creative!
 // Stretch Goals
-// Use an HTML form instead of prompt() for a user to make new entries
-// Output your journal entries in an HTML table
 // Experiment with using the Bootstrap CSS library to enhance the look and feel of your project Bootstrap Introduction (Links to an external site.)
 // Add the capability to delete existing entries by their index number
 // Add the capability to edit existing entries by their index number and update the entry in the array
@@ -90,36 +88,113 @@
 
 
 function main(){
-
 // alert('hello ');
-// get the container and append it to the body
 
-let container = document.getElementById('container');
-document.body.appendChild(container);
 
-// Use JavaScript prompts for entering Reflections into your journal
-let reflections=prompt('hello how is your day....');   //need to correct the output
-// more prompts
-// more prompts
-// more prompts
-// more prompts
-
-// =================================================================================================================
-
-// Implement the JavaScript necessary to process and validate the submitted data;
-// probably need some conditionals here
-
-// ======================================================================================================================
 
 // Use JavaScript to create Reflection object instances and display them in the console AND browser
 // definitely going to have to create a class || factory
-// ======================================================================================================================
+    class JournalEntryClass{
+        createJournal(creationDate, journalEntry,confidenceLevel){
+        this.creationDate=creationDate;
+        this.journalEntry=journalEntry;
+        this.confidenceLevel=confidenceLevel;
+    }
+};
+// ==============================================================================
+// Add the entry to the journalEntries array
+const journalList=[];
+// ==============================================================================
+// create some elements
+// ==============================================================================
+
+// get the container and append it to the body
+let container = document.getElementById('container');
+// append the container to the body
+document.body.appendChild(container);
+
+// Add an unordered list (ul) to the DOM
+let unorderedList=document.createElement('ul');
+// Add create date as a list item (li) element to the unordered list
+let listItem=document.createElement('li');
+
+
+// add a class list for the list items;
+listItem.classList.add('listed');
+
+let listText=document.createTextNode('list item');
+listItem.appendChild(listText);
+
+// append the list items to the list
+unorderedList.appendChild(listItem);
+container.appendChild(unorderedList);
+
+let h1=document.createElement('h1');
+h1.classList.add('headers');
+let h1Text=document.createTextNode('hi im your h1');
+h1.appendChild(h1Text);
+container.append(h1);
+// ====================================================================================
+// Use JavaScript prompts for entering Reflections into your journal
+let reflections=prompt('hello how is your day....');   //need to correct the output
+// Creation Date - Prompt for a date
+let creation=prompt('Please enter the date!');
+
+// Implement the JavaScript necessary to process and validate the submitted data;
+// rate your confidence
+let confidence=prompt('Please rate your confidence \n Low, Medium, or High');
+// probably need some conditionals here
+if(confidence=='low'){
+    console.log('low');
+
+}
+else if(confidence=='medium'){
+    console.log('medium');
+
+}
+else if(confidence=='high'){
+    console.log('high');
+};
+
+
+
+
+
+
+
+
+// // ==============================================================================
+
+// Use an HTML form instead of prompt() for a user to make new entries
+
+let form=document.createElement('form');
+form.setAttribute('method','post')
+form.setAttribute('action',"submit");
+let i = document.createElement("input"); //input element, text
+i.setAttribute('type',"text");
+i.setAttribute('name',"username");
+form.appendChild(i);
+container.appendChild(form);
+
+
+
+
+
+
+
+
+
+
+// Output your journal entries in an HTML table
+// // ==============================================================================
+
+
 
 
 
 //  (Links to an external site.)Requirements:
 // When the user clicks the 'Add Journal Entries' button, use JavaScript prompts for entering reflections consisting of the following items:
-// Creation Date - Prompt for a date
+
 // Confidence Level - Prompt the user to specify Low, Medium, and High confidence level 
 // (your implementation should handle any entry regardless of upper or lowercase and any entry that does not match one of the 3 options
 //  should be rejected with an error message alert and the user should be prompted to re-enter their confidence level value)
