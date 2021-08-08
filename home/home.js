@@ -5,8 +5,8 @@ const journalEntriesArray = [];
 
 // class of journal entries
 class JournalEntry{
-    constructor(creationDate,confidenceLevel,entry){
-      this.creationDate = creationDate;
+    constructor(title,confidenceLevel,entry){
+      this.title = title;
       this.confidenceLevel = confidenceLevel;
       this.entry=entry;
       journalEntriesArray.push(this);
@@ -17,13 +17,13 @@ class JournalEntry{
 
 function createEntry() {
     let user = prompt(' hi what is your name?');
-    let creationDate = prompt("please enter the today's date");
+    let title = prompt("please name this entry");
     let confidenceLevel = prompt('Please rate your confidence... \n Low, Med, or High');
     let entry=prompt('please enter your relections here');
   
- if (creationDate != null && confidenceLevel != null && entry != null) {
+ if (title != null && confidenceLevel != null && entry != null) {
     alert(`thank you, ${user} `);
-    let newEntry = new JournalEntry(creationDate, confidenceLevel, entry);
+    let newEntry = new JournalEntry(title, confidenceLevel, entry);
     console.log(newEntry);
 
  } else{
@@ -33,12 +33,21 @@ function createEntry() {
 
 //   manipulate the dom
 // make a list with 3 li's
+let newDate = new Date;
 let listDiv = document.getElementById('list');
 let container = document.getElementById('container');
 let list = document.createElement('ul');
+// create the header 
+let header = document.createElement('h1');
+// create a text node to the header
+let headerText = document.createTextNode('On ' + newDate + ':');
+// append the text-node to the h1 element
+header.appendChild(headerText);
+// append h1 to the list div;
+listDiv.appendChild(header);
 
 let dateLi = document.createElement('li');
-let dateText = document.createTextNode(`Date: ${creationDate}`)
+let dateText = document.createTextNode(`Title: ${title}`)
 dateLi.appendChild(dateText);
 list.appendChild(dateLi);
 
@@ -60,7 +69,8 @@ listDiv.appendChild(list);
 };
 // createEntry();
 console.log(journalEntriesArray);
-
+// make the button and append it to the container
+let container = document.getElementById('container');
 let btn = document.createElement('button');
 container.appendChild(btn);
 let btnText = document.createTextNode('NEW ENTRY');
