@@ -33,31 +33,34 @@ function createEntry() {
 
 //   manipulate the dom
 // make a list with 3 li's
+let listDiv = document.getElementById('list');
+let container = document.getElementById('container');
 let list = document.createElement('ul');
 
 let dateLi = document.createElement('li');
-let dateText = document.createTextNode(creationDate)
+let dateText = document.createTextNode(`Date: ${creationDate}`)
 dateLi.appendChild(dateText);
 list.appendChild(dateLi);
 
 
 let confidenceLi = document.createElement('li');
-let confidenceText = document.createTextNode(confidenceLevel)
+let confidenceText = document.createTextNode(`Confidence Level: ${confidenceLevel}`)
 confidenceLi.appendChild(confidenceText);
 list.appendChild(confidenceLi);
 
 
 let entryLi = document.createElement('li');
-let entryText = document.createTextNode(entry)
+let entryText = document.createTextNode(`New Entry: ${entry}`)
 entryLi.appendChild(entryText);
 list.appendChild(entryLi);
-container.appendChild(list);
+
+// append the list
+listDiv.appendChild(list);
 // 
 };
 // createEntry();
 console.log(journalEntriesArray);
 
-let container = document.getElementById('container');
 let btn = document.createElement('button');
 container.appendChild(btn);
 let btnText = document.createTextNode('NEW ENTRY');
